@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="./icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/CSS/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Pazhong Automation</title>
+
+    <style>
+
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-family:"Trebuchet MS", Helvetica, sans-serif;
+    /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+.background{
+    height: 100vh;
+    overflow: hidden;
+    /* background-color: #00000032; */
+    background-color: #0074ff3d;
+
+}
+.background video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+nav{
+    position: relative;
+    top: -40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction:row ;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    padding: 5px 15px;
+    border-radius: 10px ;
+}
+nav ul li a:hover{
+    color: #000;
+    background-color: #9bfffd;
+    transition: ease-in-out .5s;
+
+}
+.hamburger{
+    display: none;
+    background-color: none;
+    color: black;
+}
+.menu_container{
+    background-color: aqua;
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    flex-direction: column;
+}
+.menu_container a{
+    color: white;
+    text-decoration: none;
+    pad: 10px;
+}
+.logo{
+    position: relative;
+    left: -20px;
+    width: 200px;
+    height: 200px;
+}
+h1{
+    display: inline-block;
+}
+.content{
+    position: relative;
+    left: 10%;
+    width: 85%;
+    height: 70%;
+    color: white;
+    scroll-behavior: smooth;
+    overflow: auto;
+}
+.content::-webkit-scrollbar{
+    display: none;
+}
+.section{
+    min-height: 100%;
+    margin-top: 20px;
+}
+.title{
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.paragraph{
+    width: 70%;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-left:20px ;
+}
+.paragraph p a{
+    padding: 10px;
+    border-radius: 10px;
+    color: #9bfffd;
+    text-decoration: none;
+    font-size: 10px;
+}
+.paragraph p a:hover{
+    color: #000;
+    background-color: #9bfffd;
+    transition: ease-in-out .5s;
+}
+#team .paragraph p span{
+    font-size: 23px;
+    margin-left:-20px ;
+    display: block;
+}
+button{
+    border: none;
+    background: none;
+
+}
+button a{
+    margin: 20px;
+    padding: 10px 20px;
+    background-color:aqua;
+    border-radius:5px ;
+}
+p{
+    padding: 20px;
+    line-height: 1.8;
+}
+.image_container{
+    width: 95%;
+    height: auto;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* background-color: red; */
+}
+.image_card{
+    margin: 20px;
+    display: inline-block;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}       
+
+
+  .box {
+    height: 300px;
+    width: 250px;  
+    margin: 20px;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+  }
+  .hid-box {
+    top: 100%;
+    position: relative;
+    transition: all .3s ease-out;
+    padding: 10px;
+    background: #2f2f2f;
+    height: 100%;
+  }
+  
+  .box:hover  .hid-box{
+    top: 0;
+  }
+  .mechatronics{
+  background-image: url("mechatronics.jpeg");
+  background-size: cover;
+  background-repeat:no-repeat ;
+}
+  .programming{
+  background-image: url("mechatronics.jpeg");
+  background-size: cover;
+  background-repeat:no-repeat ;
+}
+  .webDev{
+  background-image: url("mechatronics.jpeg");
+  background-size: cover;
+  background-repeat:no-repeat ;
+}
+  .bots{
+  background-image: url("mechatronics.jpeg");
+  background-size: cover;
+  background-repeat:no-repeat ;
+}
+
+@media screen and (max-width : 600px){
+    .content{
+        width: 100%;
+    }
+    .section{
+        height: auto;
+    }
+    .title{
+        font-size: 2rem;
+    }
+    .paragraph{
+        font-size: 1rem;
+    }
+    .hamburger{
+        display: inline-block;
+    }
+    nav ul{
+        display: none;
+    }
+    .paragraph{
+        width: 90%;
+    }
+    .image_container{
+        width: 80%;
+    }
+}
+    
+/* projects.css */
+
+
+
+    </style>
+</head>
+
+
+
+<body>
+
+    <div class="background">
+        <video autoplay loop muted>
+            <source src="./video.mp4" type="video/mp4">
+        </video>
+        <nav>
+            <img class="logo" src="./logo2.png" alt="">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <!-- <li><a href="#about">About</a></li> -->
+                <li><a href="#team">Team</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="hamburger">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="menu_container">
+                <a href="#home">Home</a>
+                <!-- <a href="#about">About</a> -->
+                <a href="#about">Team</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        <div class="content">
+
+            <div class="section" id="home">
+                <h1 class="title">Ni Ha !</h1>
+                <div class="paragraph">
+                    <p>
+                        I hope you are all fine. we are Group of young students. -Our origin is China, Hainan Normal
+                        University which is very famous for chinese language and Culture. I am Mechatronics Engineer, i
+                        have working experience of 2 years in china and currently in pakistan cause of covid. I came to
+                        this platform just to try working for all over the world. I am Experienced in Automation and
+                        Electronics
+                    </p>
+                </div>
+
+            </div>
+
+
+
+            <div class="section" id="team">
+                <h1 class="title">Our Team</h1>
+                <div class="paragraph">
+                        <p>
+                            <Span>CEO</Span>
+                            Waleed Bin Nasir <br> Ali Ashraf <br>
+                            <span>Head programmers </span>
+                            Muhammad Mustafa <br>
+                            Muhammad Ahmad <br>
+                            Shyed Ali shabaz <br>   
+                    </p>
+                    <button><a href="#">Read More</a></button>
+                </div>
+            </div>
+
+
+
+
+            <div class="section" id="projects">
+                <h1 class="title">Projects</h1>
+                <div class="paragraph">
+                    <p>
+                        Here are some of our categorized Projects...
+                    </p>
+                </div>
+
+                <div class="image_container">
+
+
+
+                    <div class="box mechatronics">
+                        <div class="hid-box">
+                            <h1>Mechatronics</h1>
+                            <p>This is a quick demo of slide-up effect using CSS animation when hover the box. No JS
+                                required!</p>
+                            <button><a href="">Read More</a></button>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="box programming">
+                        <div class="hid-box">
+                            <h1>CSS3 slide up</h1>
+                            <p>This is a quick demo of slide-up effect using CSS animation when hover the box. No JS
+                                required!</p>
+                            <button><a href="">Read More</a></button>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="box webDev">
+                        <div class="hid-box">
+                            <h1>CSS3 slide up</h1>
+                            <p>This is a quick demo of slide-up effect using CSS animation when hover the box. No JS
+                                required!</p>
+                            <button><a href="">Read More</a></button>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="box bots">
+                        <div class="hid-box">
+                            <h1>CSS3 slide up</h1>
+                            <p>This is a quick demo of slide-up effect using CSS animation when hover the box. No JS
+                                required!</p>
+                            <button><a href="">Read More</a></button>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="section" id="contact">
+                <h1 class="title">Contact Us</h1>
+                <div class="paragraph">
+                    <p>
+                        CEOs
+                        Waleed Bin Nasir & Ali Ashraf <br>
+                        Head programmers <br>
+                        Muhammad Mustafa
+                        Muhammad Ahmad
+                        Shyed Ali shabaz
+                        Contacts <br>
+                        
+                        <!-- <a href="#"><i class="fa fa-instagram fa-2x"></i></a><br> -->
+                        <a href="#"><i class="fa fa-facebook fa-2x"> &nbsp; waleed</i></a><br>
+                        <a href="#"><i class="fa fa-whatsapp fa-2x">&nbsp; Waleed: +923045929006</i></a><br>
+                        <a href="#"><i class="fa fa-whatsapp fa-2x">&nbsp; Ali: +92 310 8657920</i></a><br>
+                        <a href="#"><i class="fa fa-phone fa-2x">&nbsp; +923045929006</i></a><br>
+                    </p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+</body>
+
+</html>
